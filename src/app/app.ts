@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CustomButton } from './custom-button/custom-button';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CustomButton],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('components');
