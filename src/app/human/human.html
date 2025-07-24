@@ -1,0 +1,7 @@
+<p>{{ firstName() }} {{ lastName() }}, from {{ birthCity() }}</p>
+@if(birthCity() === "Tbilisi" || birthCity() === "Kutaisi" || birthCity() ===
+"Batumi") {
+<p>I am from Georgia!</p>
+} @else {
+<p>I am <strong>NOT</strong> from Georgia!</p>
+}
