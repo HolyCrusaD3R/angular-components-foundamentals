@@ -1,5 +1,5 @@
 <!-- <app-custom-button /> -->
-<app-human
+<!-- <app-human
   [firstName]="'Luka'"
   [lastName]="'Rekhviashvili'"
   [birthCity]="defaultCity"
@@ -9,5 +9,10 @@
   [lastName]="'Kobakhidze'"
   [birthCity]="'Tbilisi'"
 />
-<app-human [firstName]="'John'" [lastName]="'Doe'" [birthCity]="cities[1]" />
-<p>This is paragraph of App Component!</p>
+<app-human [firstName]="'John'" [lastName]="'Doe'" [birthCity]="cities[1]" /> -->
+<!-- <p>This is paragraph of App Component!</p> -->
+
+<!-- <app-task [description]="'But Groceries'" [priority]="'High'" /> -->
+@for(task of tasks; track task.id) {
+<app-task [description]="task.description" [priority]="task.priority" />
+}
