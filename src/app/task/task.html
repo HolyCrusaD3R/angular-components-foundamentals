@@ -2,7 +2,6 @@
   [class.lowPr]="priority() === 'Low'"
   [class.highPr]="priority() === 'High'"
   (click)="onTaskClick()"
-  style="cursor: pointer"
 >
   <p><strong>Description: </strong> {{ description() }}</p>
   <p><strong>Priority: </strong> {{ priority() }}</p>

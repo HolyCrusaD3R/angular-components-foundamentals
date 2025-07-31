@@ -9,14 +9,14 @@ import { Component, input, output } from '@angular/core';
 export class Task {
   priority = input<string>();
   description = input<string>();
-  taskId = input<number>();
+  id = input<number>();
 
   taskClick = output<number>();
 
   onTaskClick() {
-    const id = this.taskId();
+    const id = this.id();
+    console.log('Clicked Task With ID: ', id);
     if (id !== undefined) {
-      console.log('Task clicked, ID:', id);
       this.taskClick.emit(id);
     }
   }

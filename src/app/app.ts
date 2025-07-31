@@ -41,13 +41,20 @@ export class App {
     },
   ]);
 
-  flipTaskPriority(taskId: number) {
-    this.tasks.update((currentTasks) =>
-      currentTasks.map((task) =>
-        task.id === taskId
-          ? { ...task, priority: task.priority === 'High' ? 'Low' : 'High' }
-          : task
-      )
+  flipPriority(id: number) {
+    this.tasks.update((tasks) =>
+      tasks.map((t) => {
+        if (t.id !== id) {
+          return t;
+        } else {
+          if (t.priority === 'High') {
+            t.priority = 'Low';
+          } else {
+            t.priority = 'High';
+          }
+          return t;
+        }
+      })
     );
   }
 }

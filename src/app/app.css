@@ -1,5 +1,5 @@
-.tasks-container {
+.task-container {
   display: flex;
+  gap: 5px;
   flex-direction: column;
-  gap: 10px;
 }
