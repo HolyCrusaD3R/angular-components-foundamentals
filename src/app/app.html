@@ -13,9 +13,15 @@
 <!-- <p>This is paragraph of App Component!</p> -->
 
 <!-- <app-task [description]="'But Groceries'" [priority]="'High'" /> -->
-<!-- @for(task of tasks; track task.id) {
-<app-task [description]="task.description" [priority]="task.priority" />
-} -->
-
-<app-counter />
-<app-counter />
+<div class="tasks-container">
+  @for(task of tasks; track task.id) {
+  <app-task
+    [description]="task.description"
+    [priority]="task.priority"
+    [taskId]="task.id"
+    (taskClick)="flipTaskPriority($event)"
+  />
+  }
+</div>
+<!-- <app-counter />
+<app-counter /> -->

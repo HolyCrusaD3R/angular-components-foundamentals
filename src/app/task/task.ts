@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -9,4 +9,15 @@ import { Component, input } from '@angular/core';
 export class Task {
   priority = input<string>();
   description = input<string>();
+  taskId = input<number>();
+
+  taskClick = output<number>();
+
+  onTaskClick() {
+    const id = this.taskId();
+    if (id !== undefined) {
+      console.log('Task clicked, ID:', id);
+      this.taskClick.emit(id);
+    }
+  }
 }

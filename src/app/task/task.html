@@ -1,2 +1,9 @@
-<p><strong>Description: </strong> {{ description() }}</p>
-<p><strong>Priority: </strong> {{ priority() }}</p>
+<div
+  [class.lowPr]="priority() === 'High'"
+  [class.highPr]="priority() === 'Low'"
+  (click)="onTaskClick()"
+  style="cursor: pointer"
+>
+  <p><strong>Description: </strong> {{ description() }}</p>
+  <p><strong>Priority: </strong> {{ priority() }}</p>
+</div>
