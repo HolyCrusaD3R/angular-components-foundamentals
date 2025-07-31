@@ -1,9 +1,5 @@
 import { Component, signal } from '@angular/core';
-// import { CustomButton } from './custom-button/custom-button';
-
-import { Human } from './human/human';
 import { Task } from './task/task';
-import { Counter } from './counter/counter';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +8,7 @@ import { Counter } from './counter/counter';
   styleUrl: './app.css',
 })
 export class App {
-  // cities = ['Tbilisi', 'New York'];
-  // defaultCity = 'Tbilisi';
-  tasks = [
+  tasks = signal([
     {
       description: 'Buy Groceries',
       priority: 'High',
@@ -45,11 +39,15 @@ export class App {
       priority: 'High',
       id: 5,
     },
-  ];
+  ]);
+
   flipTaskPriority(taskId: number) {
-    const task = this.tasks.find((t) => t.id === taskId);
-    if (task) {
-      task.priority = task.priority === 'High' ? 'Low' : 'High';
-    }
+    this.tasks.update((currentTasks) =>
+      currentTasks.map((task) =>
+        task.id === taskId
+          ? { ...task, priority: task.priority === 'High' ? 'Low' : 'High' }
+          : task
+      )
+    );
   }
 }

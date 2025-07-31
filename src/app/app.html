@@ -14,7 +14,7 @@
 
 <!-- <app-task [description]="'But Groceries'" [priority]="'High'" /> -->
 <div class="tasks-container">
-  @for(task of tasks; track task.id) {
+  @for(task of tasks(); track task.id) {
   <app-task
     [description]="task.description"
     [priority]="task.priority"
