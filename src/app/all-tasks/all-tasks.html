@@ -1,0 +1,9 @@
+<p>all-tasks works!</p>
+
+<div class="task-container">
+  @for(task of tasks(); track task.id) {
+  <div class="task-wrapper" [routerLink]="['/task/', task.id]">
+    <app-task [task]="task" />
+  </div>
+  }
+</div>

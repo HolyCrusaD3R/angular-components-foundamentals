@@ -13,15 +13,7 @@
 <!-- <p>This is paragraph of App Component!</p> -->
 
 <!-- <app-task [description]="'But Groceries'" [priority]="'High'" /> -->
-<div class="task-container">
-  @for(task of tasks(); track task.id) {
-  <app-task
-    [description]="task.description"
-    [priority]="task.priority"
-    [id]="task.id"
-    (taskClick)="flipPriority($event)"
-  />
-  }
-</div>
+
+<router-outlet />
 <!-- <app-counter />
 <app-counter /> -->

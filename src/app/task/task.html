@@ -1,8 +1,8 @@
 <div
-  [class.lowPr]="priority() === 'Low'"
-  [class.highPr]="priority() === 'High'"
+  [class.lowPr]="task()?.priority === 'Low'"
+  [class.highPr]="task()?.priority === 'High'"
   (click)="onTaskClick()"
 >
-  <p><strong>Description: </strong> {{ description() }}</p>
-  <p><strong>Priority: </strong> {{ priority() }}</p>
+  <p><strong>Description: </strong> {{ task()?.description }}</p>
+  <p><strong>Priority: </strong> {{ task()?.priority }}</p>
 </div>
