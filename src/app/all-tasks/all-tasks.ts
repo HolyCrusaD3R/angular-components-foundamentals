@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { TaskComponent } from '../task/task';
 import { RouterLink } from '@angular/router';
 
-import { Task } from '../interface/Task';
+import { Task } from '../interface/task';
 
 @Component({
   selector: 'app-all-tasks',

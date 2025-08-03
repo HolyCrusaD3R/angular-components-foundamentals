@@ -1,13 +1,12 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { TaskComponent } from '../task/task';
-import { Task } from '../interface/Task';
+import { Task } from '../interface/task';
 
 @Component({
   selector: 'app-single-task',
   standalone: true,
-  imports: [CommonModule, RouterLink, TaskComponent],
+  imports: [RouterLink, TaskComponent],
   template: `
     @if (task()) {
     <div class="single-task">

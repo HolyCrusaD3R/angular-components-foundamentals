@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Task } from '../interface/Task';
+import { Task } from '../interface/task';
 
 @Component({
   selector: 'app-task',
