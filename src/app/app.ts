@@ -4,7 +4,7 @@ import { AllTasks } from './all-tasks/all-tasks';
 
 @Component({
   selector: 'app-root',
-  imports: [AllTasks, RouterOutlet],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
