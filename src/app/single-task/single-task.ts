@@ -1,41 +1,36 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { TaskComponent } from '../task/task';
-import { Task } from '../interface/task';
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { TaskService } from '../task';
+// import { Task } from '../task/task';
 
 @Component({
   selector: 'app-single-task',
   standalone: true,
-  imports: [RouterLink, TaskComponent],
-  template: `
-    @if (task()) {
-    <div class="single-task">
-      <h2>Task Details</h2>
-
-      <app-task [task]="task()" />
-      <button [routerLink]="'/'">Back to All Tasks</button>
-    </div>
-    } @else {
-    <h2>Task not found</h2>
-    }
-  `,
+  imports: [CommonModule, RouterLink],
+  templateUrl: './single-task.html',
+  styleUrl: './single-task.css',
 })
-export class SingleTask implements OnInit {
+export class SingleTaskComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private taskService = inject(TaskService);
 
-  task = signal<any>(null);
-  tasks = signal<Task[]>([
-    { description: 'Buy Groceries', priority: 'High' as const, id: 0 },
-    { description: 'Buy a Bicycle', priority: 'High' as const, id: 1 },
-    { description: 'Fix the Computer', priority: 'Low' as const, id: 2 },
-    { description: 'Attend a Party', priority: 'High' as const, id: 3 },
-    { description: 'Study for Exams', priority: 'Low' as const, id: 4 },
-    { description: 'Feed the Dog', priority: 'High' as const, id: 5 },
-  ]);
+  private taskId = signal<number | null>(null);
+
+  task = computed(() => {
+    const id = this.taskId();
+    return id !== null ? this.taskService.getTask(id) : null;
+  });
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const foundTask = this.tasks().find((t) => t.id === id);
-    this.task.set(foundTask || null);
+    this.taskId.set(id);
+  }
+
+  togglePriority() {
+    const currentTask = this.task();
+    if (currentTask) {
+      this.taskService.flipPriority(currentTask.id);
+    }
   }
 }

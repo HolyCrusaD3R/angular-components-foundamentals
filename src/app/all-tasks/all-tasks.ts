@@ -1,8 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { TaskComponent } from '../task/task';
-import { RouterLink } from '@angular/router';
-
-import { Task } from '../interface/task';
+import { TaskService } from '../task';
 
 @Component({
   selector: 'app-all-tasks',
@@ -11,28 +10,7 @@ import { Task } from '../interface/task';
   styleUrl: './all-tasks.css',
 })
 export class AllTasks {
-  tasks = signal<Task[]>([
-    { description: 'Buy Groceries', priority: 'High' as const, id: 0 },
-    { description: 'Buy a Bicycle', priority: 'High' as const, id: 1 },
-    { description: 'Fix the Computer', priority: 'Low' as const, id: 2 },
-    { description: 'Attend a Party', priority: 'High' as const, id: 3 },
-    { description: 'Study for Exams', priority: 'Low' as const, id: 4 },
-    { description: 'Feed the Dog', priority: 'High' as const, id: 5 },
-  ]);
-  // flipPriority(id: number) {
-  //   this.tasks.update((tasks) =>
-  //     tasks.map((t) => {
-  //       if (t.id !== id) {
-  //         return t;
-  //       } else {
-  //         if (t.priority === 'High') {
-  //           t.priority = 'Low';
-  //         } else {
-  //           t.priority = 'High';
-  //         }
-  //         return t;
-  //       }
-  //     })
-  //   );
-  // }
+  private taskService = inject(TaskService);
+
+  tasks = this.taskService.allTasks;
 }

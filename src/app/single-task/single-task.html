@@ -1,1 +1,17 @@
-<p>single-task works!</p>
+@if (task()) {
+<div class="single-task">
+  <h2>Task Details</h2>
+  <p><strong>Description:</strong> {{ task()?.description }}</p>
+  <p><strong>Priority:</strong> {{ task()?.priority }}</p>
+  <p><strong>ID:</strong> {{ task()?.id }}</p>
+
+  <div class="actions">
+    <button (click)="togglePriority()">
+      Toggle Priority (Currently: {{ task()?.priority }})
+    </button>
+    <button [routerLink]="'/'">Back to All Tasks</button>
+  </div>
+</div>
+} @else {
+<p>Task not found</p>
+}

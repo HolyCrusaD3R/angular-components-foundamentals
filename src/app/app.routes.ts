@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AllTasks } from './all-tasks/all-tasks';
-import { SingleTask } from './single-task/single-task';
+import { SingleTaskComponent } from './single-task/single-task';
 
 export const routes: Routes = [
   {
@@ -11,6 +11,6 @@ export const routes: Routes = [
   {
     path: 'task/:id',
     title: 'Task Details',
-    component: SingleTask,
+    component: SingleTaskComponent,
   },
 ];
